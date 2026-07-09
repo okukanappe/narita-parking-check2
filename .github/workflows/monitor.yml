@@ -1,10 +1,10 @@
-name: Test Notification
+name: Narita Parking Monitor
 
 on:
   workflow_dispatch:
 
 jobs:
-  notify:
+  check:
     runs-on: ubuntu-latest
 
     steps:
@@ -14,9 +14,11 @@ jobs:
         with:
           python-version: "3.12"
 
-      - run: pip install -r requirements.txt
+      - name: Install packages
+        run: pip install -r requirements.txt
 
-      - run: python notify.py
+      - name: Check parking
         env:
           PUSHOVER_USER: ${{ secrets.PUSHOVER_USER }}
           PUSHOVER_TOKEN: ${{ secrets.PUSHOVER_TOKEN }}
+        run: python check.py
