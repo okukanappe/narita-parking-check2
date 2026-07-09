@@ -39,7 +39,7 @@ status = match.group(1)
 
 print(f"P0814 = {status}")
 
-if status == "B":
+if status in ("B", "C"):
     print("空きあり！通知します")
 
     requests.post(
