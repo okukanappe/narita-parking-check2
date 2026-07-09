@@ -3,6 +3,10 @@ name: Narita Parking Monitor
 on:
   workflow_dispatch:
 
+  schedule:
+    # 日本時間8:00〜23:30の間、30分ごとに実行
+    - cron: "*/30 23,0-14 * * *"
+
 jobs:
   check:
     runs-on: ubuntu-latest
